@@ -103,7 +103,7 @@ Under `fields` there are the following keys:
 
 Not all records have all of the data. Some are missing one field or another. There might some cases where you'll need to filter out records that are missing a value.
 
-## Use map, filter, and reduce to solev these problems
+## Use map, filter, and reduce to solve these problems
 
 - Map: The map method is crucial because it allows you to transform each element of an array into a new array, based on a provided function. It enables you to apply a specific operation or manipulation to every item in an array, returning a new array of the same length. By using map, you can efficiently perform operations like modifying values, extracting specific properties, or even creating entirely new objects from the original array.
 - Filter: The filter method is essential when you want to selectively extract elements from an array based on a condition. It takes a function that evaluates each item, and if the function returns true, the item is included in the resulting array. This enables you to easily create new arrays containing only the elements that satisfy a particular criteria, such as filtering out certain values, finding specific patterns, or removing unwanted data from a dataset.
