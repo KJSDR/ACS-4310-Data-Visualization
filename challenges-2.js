@@ -157,7 +157,10 @@ const normalizeProperty = (data, property) => {
 // would return ['male', 'female']
 
 const getUniqueValues = (data, property) => {
-	return []
+	const seen = new Set();
+  data.forEach(p => seen.add(p.fields?.[property]));
+  return Array.from(seen);
+
 }
 
 // There are a couple ways to do this. 
