@@ -25,7 +25,7 @@
 // Or if property = 'age' -> [40, 26, 22, 28, 23, 45, 21, ...]
 
 const getAllValuesForProperty = (data, property) => {
-	return []
+	return data.map(p => p.fields?.[property]);
 }
 
 // 2 -------------------------------------------------------------
@@ -36,7 +36,7 @@ const getAllValuesForProperty = (data, property) => {
 // that patch the property and value. 
 
 const filterByProperty = (data, property, value) => {
-	return []
+	return data.filter(p => p.fields?.[property] === value);
 }
 
 // 3 -------------------------------------------------------------
