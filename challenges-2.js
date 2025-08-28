@@ -128,7 +128,16 @@ const makeHistogram = (data, property, step) => {
 // to divide each value by the maximum value in the array.
 
 const normalizeProperty = (data, property) => {
-	return []
+	const values = data
+    .map(p => Number(p.fields?.[property]))
+    .filter(n => !Number.isNaN(n) && Number.isFinite(n));
+
+  if (values.length === 0) return [];
+
+  const max = Math.max(...values);
+  if (max === 0) return values.map(() => 0);
+
+  return values.map(v => v / max);
 }
 
 // Normalizing is an important process that can make many other
