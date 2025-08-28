@@ -45,7 +45,7 @@ const filterByProperty = (data, property, value) => {
 // given property have been removed
 
 const filterNullForProperty = (data, property) => {
-	return []
+	return data.filter(p => p.fields?.[property] !== undefined);
 }
 
 // 4 -------------------------------------------------------------
@@ -55,7 +55,10 @@ const filterNullForProperty = (data, property) => {
 // You need to remove any missing values because n + undefined = NaN!
 
 const sumAllProperty = (data, property) => {
-	return 0
+	return data
+    .map(p => Number(p.fields?.[property]))
+    .filter(n => !Number.isNaN(n))
+    .reduce((sum, n) => sum + n, 0);
 }
 
 
@@ -70,7 +73,11 @@ const sumAllProperty = (data, property) => {
 // at Cherbourg, 77 emabrked at Queenstown, and 2 are undedfined
 
 const countAllProperty = (data, property) => {
-	return {}
+	return data.reduce((acc, p) => {
+		const val = p.fields?.[property];   // may be undefined
+		acc[val] = (acc[val] || 0) + 1;
+		return acc;
+	  }, {});
 }
 
 // Use reduce with an object as the starting accumulator! 
