@@ -92,7 +92,23 @@ const countAllProperty = (data, property) => {
 // ages 0 - 10, 10 - 20, 20 - 30 etc. 
 
 const makeHistogram = (data, property, step) => {
-	return []
+	const values = data
+    .map(p => Number(p.fields?.[property]))
+    .filter(n => !Number.isNaN(n) && Number.isFinite(n));
+
+  if (values.length === 0) return [];
+
+  const max = Math.max(...values);
+  const bucketCount = Math.floor(max / step) + 1;
+
+  const buckets = Array.from({ length: bucketCount }, () => 0);
+
+  values.forEach(v => {
+    const idx = Math.floor(v / step);
+    buckets[idx] += 1;
+  });
+
+  return buckets;
 }
 
 // Note! There may not be no values for a particular step. For example
